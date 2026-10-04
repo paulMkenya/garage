@@ -81,6 +81,77 @@
    "type": "Link"
   },
   {
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "show_arrow": 0,
+   "icon": "log-out",
+   "child": 0,
+   "label": "Gate Pass",
+   "link_to": "Gate Pass",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "indent": 1,
+   "keep_closed": 0,
+   "show_arrow": 0,
+   "icon": "bar-chart",
+   "child": 0,
+   "label": "Reports",
+   "link_type": "DocType",
+   "type": "Section Break"
+  },
+  {
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "show_arrow": 0,
+   "icon": "",
+   "child": 1,
+   "label": "Cars In Yard",
+   "link_to": "Cars In Yard",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "show_arrow": 0,
+   "icon": "",
+   "child": 1,
+   "label": "Repair Turnaround",
+   "link_to": "Repair Turnaround",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "show_arrow": 0,
+   "icon": "",
+   "child": 1,
+   "label": "Technician Workload",
+   "link_to": "Technician Workload",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "show_arrow": 0,
+   "icon": "",
+   "child": 1,
+   "label": "Garage Revenue",
+   "link_to": "Garage Revenue",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
    "child": 0,
    "collapsible": 1,
    "icon": "settings",
@@ -114,9 +185,21 @@
    "link_type": "DocType",
    "show_arrow": 0,
    "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "show_arrow": 0,
+   "icon": "",
+   "child": 1,
+   "label": "SMS Log",
+   "link_to": "Garage SMS Log",
+   "link_type": "DocType",
+   "type": "Link"
   }
  ],
- "modified": "2026-10-04 18:30:00.000000",
+ "modified": "2026-10-04 19:30:00.000000",
  "modified_by": "Administrator",
  "module": "Garage",
  "name": "Garage",
