@@ -3,6 +3,7 @@
  "allow_rename": 0,
  "autoname": "naming_series:",
  "creation": "2026-10-04 19:30:00.000000",
+ "default_print_format": "Gate Pass Print",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -337,7 +338,7 @@
  "index_web_pages_for_search": 0,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-04 19:30:00.000000",
+ "modified": "2026-10-04 20:30:00.000000",
  "modified_by": "Administrator",
  "module": "Garage",
  "name": "Gate Pass",
