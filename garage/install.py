@@ -77,3 +77,9 @@ def setup_workshop():
 		for status in RO_STATUSES:
 			board.append("columns", {"column_name": status, "status": "Active", "indicator": "Gray"})
 		board.insert(ignore_permissions=True)
+	frappe.db.set_value(
+		"Kanban Board",
+		"Workshop Board",
+		"fields",
+		'["customer_name", "vehicle_description", "technician_name", "bay", "promised_time"]',
+	)
