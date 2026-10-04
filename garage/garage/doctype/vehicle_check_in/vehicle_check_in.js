@@ -41,6 +41,15 @@ frappe.ui.form.on("Vehicle Check In", {
 				frm.dirty();
 			});
 		}
+		if (frm.doc.docstatus === 1 && !["Released", "Cancelled"].includes(frm.doc.status)) {
+			frm.add_custom_button(__("Repair Order"), async () => {
+				const r = await frappe.call({
+					method: "garage.garage.doctype.repair_order.repair_order.make_repair_order",
+					args: { check_in: frm.doc.name }, freeze: true,
+				});
+				if (r.message) frappe.set_route("Form", "Repair Order", r.message);
+			}, __("Create"));
+		}
 		if (frm.doc.docstatus === 1) {
 			frm.add_custom_button(__("Print Check-In Receipt"), () =>
 				frm.print_doc ? frm.print_doc() : frappe.set_route("print", frm.doctype, frm.doc.name)

@@ -12,3 +12,7 @@ jinja = {"methods": ["garage.damage_map.damage_map_svg"]}
 
 after_install = "garage.install.after_install"
 after_migrate = ["garage.install.after_install"]
+
+doc_events = {
+	"Sales Invoice": {"on_submit": "garage.garage.doctype.repair_order.repair_order.link_on_submit"},
+}

@@ -118,3 +118,15 @@ TEMPLATES = {
 	"Quick Check-In": ("Short check for quick services and regular customers", 0, QUICK),
 	"Motorcycle Check-In": ("Check for motorcycles and boda bodas", 0, MOTORCYCLE),
 }
+
+LABOUR_ITEMS = [
+	("LAB-GENERAL", "General Labour"),
+	("LAB-DIAG", "Diagnosis / Fault Finding"),
+	("LAB-SERVICE", "Service Labour"),
+	("LAB-ELECTRICAL", "Electrical Labour"),
+	("LAB-BODY", "Panel Beating & Paint Labour"),
+	("LAB-ALIGN", "Wheel Alignment"),
+	("LAB-BALANCE", "Wheel Balancing"),
+	("LAB-AC", "AC Service Labour"),
+	("LAB-ROADTEST", "Road Test"),
+]

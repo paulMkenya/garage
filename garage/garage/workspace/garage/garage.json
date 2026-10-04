@@ -1,7 +1,7 @@
 {
  "app": "garage",
  "charts": [],
- "content": "[{\"id\": \"g1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Gate</b></span>\", \"col\": 12}}, {\"id\": \"g2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Check-In\", \"col\": 3}}, {\"id\": \"g3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cars in Yard\", \"col\": 3}}, {\"id\": \"g4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicles\", \"col\": 3}}, {\"id\": \"g5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customers\", \"col\": 3}}, {\"id\": \"g6\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Setup</b></span>\", \"col\": 12}}, {\"id\": \"g7\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}]",
+ "content": "[{\"id\": \"g1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Gate</b></span>\", \"col\": 12}}, {\"id\": \"g2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Check-In\", \"col\": 3}}, {\"id\": \"g3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cars in Yard\", \"col\": 3}}, {\"id\": \"g4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicles\", \"col\": 3}}, {\"id\": \"g5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customers\", \"col\": 3}}, {\"id\": \"g8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Repair Orders\", \"col\": 3}}, {\"id\": \"g9\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Workshop Board\", \"col\": 3}}, {\"id\": \"g6\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Setup</b></span>\", \"col\": 12}}, {\"id\": \"g7\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}]",
  "creation": "2026-10-04 12:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -42,7 +42,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-04 12:00:00.000000",
+ "modified": "2026-10-04 18:30:00.000000",
  "modified_by": "Administrator",
  "module": "Garage",
  "name": "Garage",
@@ -83,6 +83,23 @@
    "doc_view": "List",
    "label": "Customers",
    "link_to": "Customer",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "{} open",
+   "label": "Repair Orders",
+   "link_to": "Repair Order",
+   "stats_filter": "[[\"Repair Order\", \"status\", \"not in\", [\"Released\", \"Cancelled\"]]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "Kanban",
+   "kanban_board": "Workshop Board",
+   "label": "Workshop Board",
+   "link_to": "Repair Order",
    "type": "DocType"
   }
  ],
