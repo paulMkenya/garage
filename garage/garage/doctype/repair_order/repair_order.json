@@ -51,6 +51,7 @@
   "approved_by",
   "approval_method",
   "approved_on",
+  "customer_link_key",
   "section_billing",
   "sales_invoice",
   "column_break_b",
@@ -348,6 +349,15 @@
    "read_only": 1
   },
   {
+   "fieldname": "customer_link_key",
+   "fieldtype": "Data",
+   "label": "Customer Link Key",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "unique": 1
+  },
+  {
    "fieldname": "section_billing",
    "fieldtype": "Section Break",
    "label": "Billing"
@@ -392,7 +402,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-10-04 21:00:00.000000",
+ "modified": "2026-10-04 22:00:00.000000",
  "modified_by": "Administrator",
  "module": "Garage",
  "name": "Repair Order",

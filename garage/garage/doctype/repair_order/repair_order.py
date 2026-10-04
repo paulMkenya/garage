@@ -23,6 +23,8 @@ class RepairOrder(Document):
 			self.currency = frappe.get_cached_value("Company", self.company, "default_currency")
 		if self.vehicle and not self.vehicle_description:
 			self.vehicle_description = frappe.get_doc("Garage Vehicle", self.vehicle).description
+		if not self.customer_link_key:
+			self.customer_link_key = frappe.generate_hash(length=24)
 		self.set_item_defaults()
 		self.calculate_totals()
 		self.stamp_times()
@@ -127,6 +129,10 @@ def record_approval(repair_order: str, approved_by: str, method: str, approved_r
 	ro = frappe.get_doc("Repair Order", repair_order)
 	ro.check_permission("write")
 	rows = frappe.parse_json(approved_rows) if approved_rows else [r.name for r in ro.items]
+	return apply_approval(ro, approved_by, method, rows)
+
+
+def apply_approval(ro, approved_by, method, rows):
 	for row in ro.items:
 		row.approved = 1 if row.name in rows else 0
 	for job in ro.jobs:
@@ -143,6 +149,19 @@ def record_approval(repair_order: str, approved_by: str, method: str, approved_r
 	ro.save()
 	ro.add_comment("Info", _("Customer approval recorded: {0} by {1} via {2}").format(ro.approval_status, approved_by, method))
 	return ro.approval_status
+
+
+def customer_link(ro) -> str:
+	if not ro.customer_link_key:
+		ro.db_set("customer_link_key", frappe.generate_hash(length=24))
+	return frappe.utils.get_url("/car-status?key=" + ro.customer_link_key)
+
+
+@frappe.whitelist()
+def get_customer_link(repair_order: str):
+	ro = frappe.get_doc("Repair Order", repair_order)
+	ro.check_permission("read")
+	return customer_link(ro)
 
 
 @frappe.whitelist()

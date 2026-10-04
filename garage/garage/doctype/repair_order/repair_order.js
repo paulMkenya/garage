@@ -55,6 +55,15 @@ frappe.ui.form.on("Repair Order", {
 				if (r.message) frappe.set_route("Form", "Gate Pass", r.message);
 			}, __("Create"));
 		}
+		frm.add_custom_button(__("Customer Link"), async () => {
+			const r = await frappe.call({ method: GARAGE_RO_METHOD + "get_customer_link", args: { repair_order: frm.doc.name } });
+			frappe.msgprint({
+				title: __("Customer status & approval link"),
+				message: `<p>${__("Send this to the customer. They can see the car's progress and approve the estimate.")}</p>
+					<p><a href="${r.message}" target="_blank">${frappe.utils.escape_html(r.message)}</a></p>`,
+			});
+			frappe.utils.copy_to_clipboard(r.message);
+		}, __("View"));
 		if (frm.doc.check_in) {
 			frm.add_custom_button(__("Gate Check-In"), () => frappe.set_route("Form", "Vehicle Check In", frm.doc.check_in), __("View"));
 		}

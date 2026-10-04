@@ -12,12 +12,11 @@ frappe.ui.form.on("Quality Check", {
 			});
 		}
 		if (frm.doc.result) {
-			frm.dashboard.set_headline_alert(
-				frm.doc.result === "Pass"
-					? __("Passed. Submitting marks the car Ready for Collection.")
-					: __("Failed. Submitting sends the car back to In Progress."),
-				frm.doc.result === "Pass" ? "green" : "red"
-			);
+			const pass = frm.doc.result === "Pass";
+			const msg = frm.doc.docstatus === 1
+				? (pass ? __("Passed. The car is Ready for Collection.") : __("Failed. The car was sent back to In Progress."))
+				: (pass ? __("Passed. Submitting marks the car Ready for Collection.") : __("Failed. Submitting sends the car back to In Progress."));
+			frm.dashboard.set_headline_alert(msg, pass ? "green" : "red");
 		}
 		if (frm.doc.repair_order) {
 			frm.add_custom_button(__("Repair Order"), () => frappe.set_route("Form", "Repair Order", frm.doc.repair_order), __("View"));

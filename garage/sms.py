@@ -81,6 +81,12 @@ def _sign_off():
 	return " - " + company + (f" {phone}" if phone else "")
 
 
+def _link(ro):
+	from garage.garage.doctype.repair_order.repair_order import customer_link
+
+	return customer_link(ro)
+
+
 def on_check_in_submit(doc, method=None):
 	if not _enabled("sms_on_check_in"):
 		return
@@ -94,14 +100,17 @@ def on_repair_order_update(doc, method=None):
 	if not doc.has_value_changed("status"):
 		return
 	if doc.status == "Awaiting Approval" and _enabled("sms_on_estimate"):
-		msg = _("Hi {0}, the estimate for {1} is {2}. Please call or reply to approve the work.").format(
+		msg = _("Hi {0}, the estimate for {1} is {2}. View and approve: {3}").format(
 			_first_name(doc.customer_name),
 			doc.vehicle,
 			fmt_money(flt(doc.parts_total) + flt(doc.labour_total) + flt(doc.other_total), currency=doc.currency),
+			_link(doc),
 		)
 		send_sms(doc.contact_phone, msg + _sign_off(), "Estimate Ready", doc.doctype, doc.name)
 	elif doc.status == "Ready for Collection" and _enabled("sms_on_ready"):
-		msg = _("Hi {0}, your car {1} is ready for collection.").format(_first_name(doc.customer_name), doc.vehicle)
+		msg = _("Hi {0}, your car {1} is ready for collection. Details: {2}").format(
+			_first_name(doc.customer_name), doc.vehicle, _link(doc)
+		)
 		send_sms(doc.contact_phone, msg + _sign_off(), "Car Ready", doc.doctype, doc.name)
 
 
