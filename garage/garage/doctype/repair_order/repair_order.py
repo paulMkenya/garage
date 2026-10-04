@@ -67,6 +67,19 @@ class RepairOrder(Document):
 			open_jobs = [j.concern for j in self.jobs if j.job_status in ("Pending", "In Progress") and j.approved]
 			if open_jobs:
 				frappe.throw(_("Finish or decline these approved jobs first: {0}").format(", ".join(open_jobs)))
+		if (
+			self.status == "Ready for Collection"
+			and self.has_value_changed("status")
+			and frappe.db.get_single_value("Garage Settings", "require_quality_check")
+			and not self.has_passed_quality_check()
+		):
+			frappe.throw(_("Submit a passed Quality Check before marking the car Ready for Collection"))
+
+	def has_passed_quality_check(self):
+		return bool(
+			self.quality_check
+			and frappe.db.get_value("Quality Check", self.quality_check, ["docstatus", "result"]) == (1, "Pass")
+		)
 
 	def on_update(self):
 		if self.check_in and self.has_value_changed("status"):

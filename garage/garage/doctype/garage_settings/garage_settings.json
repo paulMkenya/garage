@@ -16,6 +16,7 @@
   "section_terms",
   "check_in_terms",
   "section_release",
+  "require_quality_check",
   "require_exit_photos",
   "require_release_signature",
   "credit_approver_role",
@@ -94,6 +95,12 @@
    "fieldname": "section_release",
    "fieldtype": "Section Break",
    "label": "Vehicle Release (Gate Pass)"
+  },
+  {
+   "fieldname": "require_quality_check",
+   "fieldtype": "Check",
+   "label": "Require passed Quality Check before Ready for Collection",
+   "default": "1"
   },
   {
    "default": "1",
@@ -199,7 +206,7 @@
  "index_web_pages_for_search": 0,
  "issingle": 1,
  "links": [],
- "modified": "2026-10-04 19:30:00.000000",
+ "modified": "2026-10-04 21:00:00.000000",
  "modified_by": "Administrator",
  "module": "Garage",
  "name": "Garage Settings",

@@ -130,3 +130,23 @@ LABOUR_ITEMS = [
 	("LAB-AC", "AC Service Labour"),
 	("LAB-ROADTEST", "Road Test"),
 ]
+
+QC_CHECKS = [
+	("Work", "All approved jobs completed"),
+	("Work", "Old parts kept / bagged as the customer asked"),
+	("Work", "No tools, rags or parts left in the car or engine bay"),
+	("Fluids", "Engine oil level"),
+	("Fluids", "Coolant level"),
+	("Fluids", "Brake fluid level"),
+	("Fluids", "No leaks under the car"),
+	("Safety", "Wheel nuts torqued"),
+	("Safety", "Tyre pressures set"),
+	("Safety", "Brakes and handbrake"),
+	("Safety", "Lights, indicators and horn"),
+	("Electrical", "No warning lights on the dashboard"),
+	("Electrical", "Service reminder reset"),
+	("Finish", "Seat, mirror and radio settings restored"),
+	("Finish", "Seat covers and floor mats removed"),
+	("Finish", "No new damage compared with the check-in damage map"),
+	("Finish", "Car cleaned"),
+]

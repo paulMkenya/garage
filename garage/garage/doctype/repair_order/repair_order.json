@@ -32,6 +32,7 @@
   "column_break_t",
   "started_on",
   "completed_on",
+  "quality_check",
   "section_jobs",
   "jobs",
   "section_items",
@@ -230,6 +231,14 @@
    "read_only": 1
   },
   {
+   "fieldname": "quality_check",
+   "fieldtype": "Link",
+   "label": "Quality Check",
+   "options": "Quality Check",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
    "fieldname": "section_jobs",
    "fieldtype": "Section Break",
    "label": "Jobs (Concern / Cause / Correction)"
@@ -383,7 +392,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-10-04 20:30:00.000000",
+ "modified": "2026-10-04 21:00:00.000000",
  "modified_by": "Administrator",
  "module": "Garage",
  "name": "Repair Order",

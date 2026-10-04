@@ -32,6 +32,19 @@ frappe.ui.form.on("Repair Order", {
 				frm.add_custom_button(__("Sales Invoice"), () => garage_ro_call(frm, "make_sales_invoice", "Sales Invoice"), __("Create"));
 			}
 		}
+		if (["In Progress", "Quality Check"].includes(frm.doc.status)) {
+			frm.add_custom_button(__("Quality Check"), async () => {
+				if (frm.is_dirty()) await frm.save();
+				const r = await frappe.call({
+					method: "garage.garage.doctype.quality_check.quality_check.make_quality_check",
+					args: { repair_order: frm.doc.name }, freeze: true,
+				});
+				if (r.message) frappe.set_route("Form", "Quality Check", r.message);
+			}, __("Create"));
+		}
+		if (frm.doc.quality_check) {
+			frm.add_custom_button(__("Quality Check"), () => frappe.set_route("Form", "Quality Check", frm.doc.quality_check), __("View"));
+		}
 		if (frm.doc.status === "Ready for Collection") {
 			frm.add_custom_button(__("Gate Pass"), async () => {
 				if (frm.is_dirty()) await frm.save();

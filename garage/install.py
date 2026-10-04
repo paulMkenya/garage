@@ -24,7 +24,7 @@ def after_install():
 		settings.check_in_terms = CHECK_IN_TERMS
 		changed = True
 	for field in settings.meta.fields:
-		if field.fieldname.startswith(("sms_", "garage_phone")) and field.default is not None:
+		if field.fieldname.startswith(("sms_", "garage_phone", "require_quality_check")) and field.default is not None:
 			if not frappe.db.sql(
 				"select 1 from `tabSingles` where doctype='Garage Settings' and field=%s", field.fieldname
 			):
