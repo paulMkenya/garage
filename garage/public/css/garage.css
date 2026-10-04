@@ -1,0 +1,14 @@
+.garage-damage-map svg { width: 100%; height: auto; max-height: 520px; border: 1px solid var(--border-color); border-radius: 8px; background: #fff; touch-action: manipulation; }
+.garage-damage-map.editable svg { cursor: crosshair; }
+.garage-damage-map .garage-mark { cursor: pointer; }
+.garage-damage-legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 6px 0 10px; }
+.garage-damage-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+.garage-fuel { display: flex; gap: 4px; margin: -6px 0 12px; }
+.garage-fuel-step { flex: 1; padding: 10px 0; border: 1px solid var(--border-color); border-radius: 6px; background: var(--control-bg); font-weight: 600; font-size: 12px; }
+.garage-fuel-step.active { background: #12b76a; border-color: #12b76a; color: #fff; }
+.garage-fuel-step.low.active { background: #f04438; border-color: #f04438; }
+.garage-history .alert { padding: 6px 10px; margin-bottom: 6px; }
+@media (max-width: 767px) {
+	.garage-damage-map { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+	.garage-damage-map svg { min-width: 680px; max-height: none; }
+}

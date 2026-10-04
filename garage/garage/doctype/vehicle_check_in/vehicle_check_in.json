@@ -1,0 +1,693 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_vehicle",
+  "naming_series",
+  "vehicle",
+  "customer",
+  "customer_name",
+  "vehicle_description",
+  "column_break_v",
+  "check_in_time",
+  "status",
+  "received_by",
+  "company",
+  "vehicle_history_html",
+  "section_driver",
+  "brought_by_owner",
+  "brought_by",
+  "column_break_d",
+  "contact_phone",
+  "id_number",
+  "contact_preference",
+  "section_dash",
+  "odometer",
+  "fuel_level",
+  "fuel_gauge_html",
+  "column_break_dash",
+  "dashboard_photo",
+  "engine_starts",
+  "vehicle_drivable",
+  "section_warning",
+  "wl_none",
+  "wl_check_engine",
+  "wl_oil",
+  "column_break_w1",
+  "wl_battery",
+  "wl_temperature",
+  "wl_brake",
+  "column_break_w2",
+  "wl_abs",
+  "wl_airbag",
+  "wl_tpms",
+  "column_break_w3",
+  "wl_service",
+  "wl_traction",
+  "wl_other",
+  "section_keys",
+  "keys_received",
+  "remote_received",
+  "spare_key",
+  "wheel_lock_key",
+  "column_break_k",
+  "doc_logbook",
+  "doc_insurance",
+  "doc_inspection",
+  "doc_service_book",
+  "doc_other",
+  "section_checklist",
+  "template",
+  "checklist",
+  "section_damage",
+  "no_visible_damage",
+  "damage_map_html",
+  "damage_marks",
+  "section_photos",
+  "photo_front",
+  "photo_left",
+  "photo_interior",
+  "column_break_p1",
+  "photo_rear",
+  "photo_right",
+  "photo_boot",
+  "column_break_p2",
+  "photo_engine",
+  "photo_plate",
+  "extra_photos",
+  "section_belongings",
+  "no_valuables",
+  "belongings",
+  "section_request",
+  "service_type",
+  "insurance_company",
+  "claim_number",
+  "column_break_r",
+  "promised_time",
+  "approval_limit",
+  "old_parts",
+  "concerns",
+  "section_sign",
+  "terms",
+  "customer_signed_name",
+  "customer_signature",
+  "column_break_s",
+  "staff_signature",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_vehicle",
+   "fieldtype": "Section Break",
+   "label": "Vehicle & Customer"
+  },
+  {
+   "default": "VCI-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "VCI-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Number Plate",
+   "options": "Garage Vehicle",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "vehicle.customer",
+   "fetch_if_empty": 1,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vehicle_description",
+   "fieldtype": "Data",
+   "label": "Vehicle",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Now",
+   "fieldname": "check_in_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Check-In Time",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "no_copy": 1,
+   "options": "Draft\nChecked In\nIn Workshop\nReady for Collection\nReleased\nCancelled",
+   "read_only": 1
+  },
+  {
+   "default": "__user",
+   "fieldname": "received_by",
+   "fieldtype": "Link",
+   "label": "Received By",
+   "options": "User"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "remember_last_selected_value": 1
+  },
+  {
+   "fieldname": "vehicle_history_html",
+   "fieldtype": "HTML",
+   "label": "History"
+  },
+  {
+   "fieldname": "section_driver",
+   "fieldtype": "Section Break",
+   "label": "Person Bringing the Vehicle"
+  },
+  {
+   "default": "1",
+   "fieldname": "brought_by_owner",
+   "fieldtype": "Check",
+   "label": "Brought by the owner"
+  },
+  {
+   "depends_on": "eval:!doc.brought_by_owner",
+   "fieldname": "brought_by",
+   "fieldtype": "Data",
+   "label": "Name",
+   "mandatory_depends_on": "eval:!doc.brought_by_owner"
+  },
+  {
+   "fieldname": "column_break_d",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "id_number",
+   "fieldtype": "Data",
+   "label": "ID / Passport No."
+  },
+  {
+   "default": "SMS",
+   "fieldname": "contact_preference",
+   "fieldtype": "Select",
+   "label": "Preferred Contact",
+   "options": "SMS\nPhone Call\nWhatsApp\nEmail"
+  },
+  {
+   "fieldname": "section_dash",
+   "fieldtype": "Section Break",
+   "label": "Odometer, Fuel & Dashboard"
+  },
+  {
+   "fieldname": "odometer",
+   "fieldtype": "Int",
+   "label": "Odometer (km)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fuel_level",
+   "fieldtype": "Select",
+   "label": "Fuel Level",
+   "options": "\nEmpty\nReserve\n1/4\n1/2\n3/4\nFull",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fuel_gauge_html",
+   "fieldtype": "HTML",
+   "label": "Fuel Gauge"
+  },
+  {
+   "fieldname": "column_break_dash",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dashboard_photo",
+   "fieldtype": "Attach Image",
+   "label": "Dashboard Photo (with engine running)"
+  },
+  {
+   "default": "Yes",
+   "fieldname": "engine_starts",
+   "fieldtype": "Select",
+   "label": "Engine Starts",
+   "options": "\nYes\nNo\nNot Tested"
+  },
+  {
+   "default": "Driven In",
+   "fieldname": "vehicle_drivable",
+   "fieldtype": "Select",
+   "label": "Drivable / Arrived",
+   "options": "\nDriven In\nTowed\nPushed"
+  },
+  {
+   "description": "Tick every light showing on the dashboard",
+   "fieldname": "section_warning",
+   "fieldtype": "Section Break",
+   "label": "Warning Lights On"
+  },
+  {
+   "fieldname": "wl_none",
+   "fieldtype": "Check",
+   "label": "No warning lights"
+  },
+  {
+   "fieldname": "wl_check_engine",
+   "fieldtype": "Check",
+   "label": "Check Engine"
+  },
+  {
+   "fieldname": "wl_oil",
+   "fieldtype": "Check",
+   "label": "Oil Pressure"
+  },
+  {
+   "fieldname": "column_break_w1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wl_battery",
+   "fieldtype": "Check",
+   "label": "Battery / Charging"
+  },
+  {
+   "fieldname": "wl_temperature",
+   "fieldtype": "Check",
+   "label": "Engine Temperature"
+  },
+  {
+   "fieldname": "wl_brake",
+   "fieldtype": "Check",
+   "label": "Brake System"
+  },
+  {
+   "fieldname": "column_break_w2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wl_abs",
+   "fieldtype": "Check",
+   "label": "ABS"
+  },
+  {
+   "fieldname": "wl_airbag",
+   "fieldtype": "Check",
+   "label": "Airbag / SRS"
+  },
+  {
+   "fieldname": "wl_tpms",
+   "fieldtype": "Check",
+   "label": "Tyre Pressure"
+  },
+  {
+   "fieldname": "column_break_w3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wl_service",
+   "fieldtype": "Check",
+   "label": "Service Due"
+  },
+  {
+   "fieldname": "wl_traction",
+   "fieldtype": "Check",
+   "label": "Traction / Stability"
+  },
+  {
+   "fieldname": "wl_other",
+   "fieldtype": "Data",
+   "label": "Other Lights"
+  },
+  {
+   "fieldname": "section_keys",
+   "fieldtype": "Section Break",
+   "label": "Keys & Documents Received"
+  },
+  {
+   "default": "1",
+   "fieldname": "keys_received",
+   "fieldtype": "Int",
+   "label": "Number of Keys"
+  },
+  {
+   "fieldname": "remote_received",
+   "fieldtype": "Check",
+   "label": "Remote / Smart Key"
+  },
+  {
+   "fieldname": "spare_key",
+   "fieldtype": "Check",
+   "label": "Spare Key"
+  },
+  {
+   "fieldname": "wheel_lock_key",
+   "fieldtype": "Check",
+   "label": "Wheel Lock Nut Key"
+  },
+  {
+   "fieldname": "column_break_k",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "doc_logbook",
+   "fieldtype": "Check",
+   "label": "Logbook (copy)"
+  },
+  {
+   "fieldname": "doc_insurance",
+   "fieldtype": "Check",
+   "label": "Insurance Sticker Valid"
+  },
+  {
+   "fieldname": "doc_inspection",
+   "fieldtype": "Check",
+   "label": "Inspection Sticker"
+  },
+  {
+   "fieldname": "doc_service_book",
+   "fieldtype": "Check",
+   "label": "Service Book"
+  },
+  {
+   "fieldname": "doc_other",
+   "fieldtype": "Data",
+   "label": "Other Documents"
+  },
+  {
+   "fieldname": "section_checklist",
+   "fieldtype": "Section Break",
+   "label": "Condition Checklist"
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "label": "Checklist Template",
+   "options": "Vehicle Check In Template"
+  },
+  {
+   "fieldname": "checklist",
+   "fieldtype": "Table",
+   "label": "Checklist",
+   "options": "Vehicle Check In Item"
+  },
+  {
+   "description": "Tap the car where there is a scratch, dent, crack or other damage",
+   "fieldname": "section_damage",
+   "fieldtype": "Section Break",
+   "label": "Body Damage Map"
+  },
+  {
+   "fieldname": "no_visible_damage",
+   "fieldtype": "Check",
+   "label": "No visible body damage"
+  },
+  {
+   "fieldname": "damage_map_html",
+   "fieldtype": "HTML",
+   "label": "Damage Map"
+  },
+  {
+   "fieldname": "damage_marks",
+   "fieldtype": "Table",
+   "label": "Damage Marks",
+   "options": "Vehicle Damage Mark"
+  },
+  {
+   "fieldname": "section_photos",
+   "fieldtype": "Section Break",
+   "label": "Walk-Around Photos"
+  },
+  {
+   "fieldname": "photo_front",
+   "fieldtype": "Attach Image",
+   "label": "Front"
+  },
+  {
+   "fieldname": "photo_left",
+   "fieldtype": "Attach Image",
+   "label": "Left Side"
+  },
+  {
+   "fieldname": "photo_interior",
+   "fieldtype": "Attach Image",
+   "label": "Interior"
+  },
+  {
+   "fieldname": "column_break_p1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "photo_rear",
+   "fieldtype": "Attach Image",
+   "label": "Rear"
+  },
+  {
+   "fieldname": "photo_right",
+   "fieldtype": "Attach Image",
+   "label": "Right Side"
+  },
+  {
+   "fieldname": "photo_boot",
+   "fieldtype": "Attach Image",
+   "label": "Boot / Load Area"
+  },
+  {
+   "fieldname": "column_break_p2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "photo_engine",
+   "fieldtype": "Attach Image",
+   "label": "Engine Bay"
+  },
+  {
+   "fieldname": "photo_plate",
+   "fieldtype": "Attach Image",
+   "label": "Number Plate / VIN"
+  },
+  {
+   "fieldname": "extra_photos",
+   "fieldtype": "Table",
+   "label": "More Photos",
+   "options": "Vehicle Check In Photo"
+  },
+  {
+   "fieldname": "section_belongings",
+   "fieldtype": "Section Break",
+   "label": "Belongings Left in the Vehicle"
+  },
+  {
+   "fieldname": "no_valuables",
+   "fieldtype": "Check",
+   "label": "Customer confirms no valuables were left in the vehicle"
+  },
+  {
+   "fieldname": "belongings",
+   "fieldtype": "Table",
+   "label": "Belongings",
+   "options": "Vehicle Belonging"
+  },
+  {
+   "fieldname": "section_request",
+   "fieldtype": "Section Break",
+   "label": "Customer Request"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Service Type",
+   "options": "\nGeneral Service\nRepair\nDiagnosis\nBody Work / Paint\nTyres & Alignment\nElectrical\nAC Service\nInspection\nWarranty\nInsurance Claim\nOther",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.service_type=='Insurance Claim'",
+   "fieldname": "insurance_company",
+   "fieldtype": "Data",
+   "label": "Insurance Company"
+  },
+  {
+   "depends_on": "eval:doc.service_type=='Insurance Claim'",
+   "fieldname": "claim_number",
+   "fieldtype": "Data",
+   "label": "Claim Number"
+  },
+  {
+   "fieldname": "column_break_r",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "promised_time",
+   "fieldtype": "Datetime",
+   "label": "Promised Ready Time"
+  },
+  {
+   "description": "Work up to this amount can go ahead without calling the customer",
+   "fieldname": "approval_limit",
+   "fieldtype": "Currency",
+   "label": "Approved Spend Limit"
+  },
+  {
+   "default": "Return to customer",
+   "fieldname": "old_parts",
+   "fieldtype": "Select",
+   "label": "Old Parts",
+   "options": "Return to customer\nDispose\nAsk customer"
+  },
+  {
+   "fieldname": "concerns",
+   "fieldtype": "Table",
+   "label": "Customer Concerns",
+   "options": "Vehicle Customer Concern"
+  },
+  {
+   "fieldname": "section_sign",
+   "fieldtype": "Section Break",
+   "label": "Sign-Off"
+  },
+  {
+   "fieldname": "terms",
+   "fieldtype": "Text",
+   "label": "Terms",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_signed_name",
+   "fieldtype": "Data",
+   "label": "Signed By"
+  },
+  {
+   "fieldname": "customer_signature",
+   "fieldtype": "Signature",
+   "label": "Customer Signature"
+  },
+  {
+   "fieldname": "column_break_s",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "staff_signature",
+   "fieldtype": "Signature",
+   "label": "Receiving Staff Signature"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Vehicle Check In",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-10-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Garage",
+ "name": "Vehicle Check In",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "customer_name,vehicle_description,status",
+ "show_name_in_global_search": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "vehicle",
+ "track_changes": 1
+}

@@ -1,0 +1,101 @@
+{
+ "app": "garage",
+ "creation": "2026-10-04 12:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "for_user": "",
+ "header_icon": "tool",
+ "idx": 1,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "home",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Home",
+   "link_to": "Garage",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "log-in",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Vehicle Check In",
+   "link_to": "Vehicle Check In",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "car",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Garage Vehicle",
+   "link_to": "Garage Vehicle",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "users",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Customer",
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "settings",
+   "indent": 1,
+   "keep_closed": 0,
+   "label": "Setup",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Section Break"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Check-In Templates",
+   "link_to": "Vehicle Check In Template",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Garage Settings",
+   "link_to": "Garage Settings",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-10-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Garage",
+ "name": "Garage",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Garage"
+}

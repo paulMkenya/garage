@@ -1,0 +1,135 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_check_in",
+  "default_check_in_template",
+  "require_walkaround_photos",
+  "require_dashboard_photo",
+  "column_break_1",
+  "require_customer_signature",
+  "require_photo_for_damage",
+  "block_duplicate_check_in",
+  "section_terms",
+  "check_in_terms"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_check_in",
+   "fieldtype": "Section Break",
+   "label": "Gate Check-In"
+  },
+  {
+   "fieldname": "default_check_in_template",
+   "fieldtype": "Link",
+   "label": "Default Check-In Template",
+   "options": "Vehicle Check In Template"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_walkaround_photos",
+   "fieldtype": "Check",
+   "label": "Require front, rear, left & right photos"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_dashboard_photo",
+   "fieldtype": "Check",
+   "label": "Require dashboard photo (odometer, fuel, warning lights)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_customer_signature",
+   "fieldtype": "Check",
+   "label": "Require customer signature"
+  },
+  {
+   "default": "0",
+   "fieldname": "require_photo_for_damage",
+   "fieldtype": "Check",
+   "label": "Require a photo for every Damaged item / Severe mark"
+  },
+  {
+   "default": "1",
+   "fieldname": "block_duplicate_check_in",
+   "fieldtype": "Check",
+   "label": "Block check-in if the vehicle is already in the yard"
+  },
+  {
+   "fieldname": "section_terms",
+   "fieldtype": "Section Break",
+   "label": "Terms printed on the check-in receipt"
+  },
+  {
+   "fieldname": "check_in_terms",
+   "fieldtype": "Text",
+   "label": "Check-In Terms"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Garage",
+ "name": "Garage Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
