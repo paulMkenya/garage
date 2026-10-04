@@ -42,6 +42,8 @@ def send_service_reminders():
 		filters={"next_service_date": ("<=", add_days(today(), 7)), "reminder_sent_on": ("is", "not set")},
 		pluck="name",
 	)
+	if not frappe.db.get_single_value("Garage Settings", "sms_service_reminders"):
+		return
 	for name in due:
 		v = frappe.get_doc("Garage Vehicle", name)
 		message = _("Hello {0}, your {1} ({2}) is due for service on {3}. Reply or call us to book.").format(
@@ -54,7 +56,7 @@ def send_service_reminders():
 		if phone:
 			from garage.sms import send_sms
 
-			send_sms(phone, message, reference_doctype="Garage Vehicle", reference_name=v.name)
+			send_sms(phone, message, "Service Reminder", "Garage Vehicle", v.name)
 		v.add_comment("Info", _("Service reminder: {0}").format(message))
 		frappe.db.set_value("Garage Vehicle", v.name, "reminder_sent_on", today())
 	frappe.db.commit()

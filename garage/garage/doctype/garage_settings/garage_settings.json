@@ -18,7 +18,21 @@
   "section_release",
   "require_exit_photos",
   "require_release_signature",
-  "credit_approver_role"
+  "credit_approver_role",
+  "section_sms",
+  "sms_enabled",
+  "sms_api_url",
+  "sms_username",
+  "sms_password",
+  "sms_sender_id",
+  "garage_phone",
+  "column_break_sms",
+  "sms_on_check_in",
+  "sms_on_estimate",
+  "sms_on_ready",
+  "sms_on_payment",
+  "sms_on_release",
+  "sms_service_reminders"
  ],
  "fields": [
   {
@@ -99,6 +113,87 @@
    "fieldtype": "Link",
    "label": "Role allowed to release unpaid vehicles",
    "options": "Role"
+  },
+  {
+   "fieldname": "section_sms",
+   "fieldtype": "Section Break",
+   "label": "SMS (Uwazii)",
+   "collapsible": 1,
+   "description": "Uwazii Mobile HTTP API. Messages are logged in Garage SMS Log; nothing is sent while SMS is disabled."
+  },
+  {
+   "fieldname": "sms_enabled",
+   "fieldtype": "Check",
+   "label": "Enable SMS Sending",
+   "default": "0"
+  },
+  {
+   "fieldname": "sms_api_url",
+   "fieldtype": "Data",
+   "label": "API Base URL",
+   "default": "http://api.messaging-service.com",
+   "description": "Base URL from your Uwazii account. Messages are posted to {base}/sms/1/text/single"
+  },
+  {
+   "fieldname": "sms_username",
+   "fieldtype": "Data",
+   "label": "API Username"
+  },
+  {
+   "fieldname": "sms_password",
+   "fieldtype": "Password",
+   "label": "API Password"
+  },
+  {
+   "fieldname": "sms_sender_id",
+   "fieldtype": "Data",
+   "label": "Sender ID",
+   "description": "Approved alphanumeric sender ID (3-11 characters)"
+  },
+  {
+   "fieldname": "garage_phone",
+   "fieldtype": "Data",
+   "label": "Garage Phone (shown in messages)"
+  },
+  {
+   "fieldname": "column_break_sms",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sms_on_check_in",
+   "fieldtype": "Check",
+   "label": "Car received at gate",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_on_estimate",
+   "fieldtype": "Check",
+   "label": "Estimate awaiting approval",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_on_ready",
+   "fieldtype": "Check",
+   "label": "Car ready for collection",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_on_payment",
+   "fieldtype": "Check",
+   "label": "Payment received",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_on_release",
+   "fieldtype": "Check",
+   "label": "Car released at gate",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_service_reminders",
+   "fieldtype": "Check",
+   "label": "Service due reminders",
+   "default": "1"
   }
  ],
  "index_web_pages_for_search": 0,

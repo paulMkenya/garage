@@ -1,7 +1,7 @@
 {
  "app": "garage",
  "charts": [],
- "content": "[{\"id\": \"g1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Gate</b></span>\", \"col\": 12}}, {\"id\": \"g2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Check-In\", \"col\": 3}}, {\"id\": \"g3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cars in Yard\", \"col\": 3}}, {\"id\": \"g4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicles\", \"col\": 3}}, {\"id\": \"g5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customers\", \"col\": 3}}, {\"id\": \"g8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Repair Orders\", \"col\": 3}}, {\"id\": \"g9\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Workshop Board\", \"col\": 3}}, {\"id\": \"g6\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Setup</b></span>\", \"col\": 12}}, {\"id\": \"g7\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}]",
+ "content": "[{\"id\": \"g1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Gate</b></span>\", \"col\": 12}}, {\"id\": \"g2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Check-In\", \"col\": 3}}, {\"id\": \"g3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cars in Yard\", \"col\": 3}}, {\"id\": \"g4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicles\", \"col\": 3}}, {\"id\": \"g5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customers\", \"col\": 3}}, {\"id\": \"g8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Repair Orders\", \"col\": 3}}, {\"id\": \"g9\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Workshop Board\", \"col\": 3}}, {\"id\": \"g6\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Setup</b></span>\", \"col\": 12}}, {\"id\": \"g7\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}, {\"id\": \"rptcard01\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
  "creation": "2026-10-04 12:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -37,6 +37,64 @@
    "label": "Garage Settings",
    "link_count": 0,
    "link_to": "Garage Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Cars In Yard",
+   "link_count": 0,
+   "link_to": "Cars In Yard",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Repair Turnaround",
+   "link_count": 0,
+   "link_to": "Repair Turnaround",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Technician Workload",
+   "link_count": 0,
+   "link_to": "Technician Workload",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Garage Revenue",
+   "link_count": 0,
+   "link_to": "Garage Revenue",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "SMS Log",
+   "link_count": 0,
+   "link_to": "Garage SMS Log",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
