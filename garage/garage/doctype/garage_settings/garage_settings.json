@@ -14,7 +14,11 @@
   "require_photo_for_damage",
   "block_duplicate_check_in",
   "section_terms",
-  "check_in_terms"
+  "check_in_terms",
+  "section_release",
+  "require_exit_photos",
+  "require_release_signature",
+  "credit_approver_role"
  ],
  "fields": [
   {
@@ -71,12 +75,36 @@
    "fieldname": "check_in_terms",
    "fieldtype": "Text",
    "label": "Check-In Terms"
+  },
+  {
+   "fieldname": "section_release",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Release (Gate Pass)"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_exit_photos",
+   "fieldtype": "Check",
+   "label": "Require front, rear, left & right exit photos"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_release_signature",
+   "fieldtype": "Check",
+   "label": "Require customer release signature"
+  },
+  {
+   "default": "Accounts Manager",
+   "fieldname": "credit_approver_role",
+   "fieldtype": "Link",
+   "label": "Role allowed to release unpaid vehicles",
+   "options": "Role"
   }
  ],
  "index_web_pages_for_search": 0,
  "issingle": 1,
  "links": [],
- "modified": "2026-10-04 12:00:00.000000",
+ "modified": "2026-10-04 19:30:00.000000",
  "modified_by": "Administrator",
  "module": "Garage",
  "name": "Garage Settings",
