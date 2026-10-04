@@ -26,6 +26,18 @@
   "last_odometer",
   "column_break_3",
   "last_check_in",
+  "last_service_date",
+  "last_service_km",
+  "column_break_svc",
+  "next_service_date",
+  "next_service_km",
+  "reminder_sent_on",
+  "section_interval",
+  "service_interval_km",
+  "column_break_int",
+  "service_interval_months",
+  "section_visits",
+  "service_history_html",
   "section_notes",
   "notes"
  ],
@@ -156,6 +168,71 @@
    "read_only": 1
   },
   {
+   "fieldname": "last_service_date",
+   "fieldtype": "Date",
+   "label": "Last Service Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_service_km",
+   "fieldtype": "Int",
+   "label": "Last Service Odometer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_svc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "next_service_date",
+   "fieldtype": "Date",
+   "in_standard_filter": 1,
+   "label": "Next Service Due"
+  },
+  {
+   "fieldname": "next_service_km",
+   "fieldtype": "Int",
+   "label": "Next Service at (km)"
+  },
+  {
+   "fieldname": "reminder_sent_on",
+   "fieldtype": "Date",
+   "label": "Reminder Sent On",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_interval",
+   "fieldtype": "Section Break",
+   "label": "Service Interval"
+  },
+  {
+   "default": "5000",
+   "fieldname": "service_interval_km",
+   "fieldtype": "Int",
+   "label": "Every (km)"
+  },
+  {
+   "fieldname": "column_break_int",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "6",
+   "fieldname": "service_interval_months",
+   "fieldtype": "Int",
+   "label": "Every (months)"
+  },
+  {
+   "fieldname": "section_visits",
+   "fieldtype": "Section Break",
+   "label": "Visit History"
+  },
+  {
+   "fieldname": "service_history_html",
+   "fieldtype": "HTML",
+   "label": "Service History"
+  },
+  {
    "fieldname": "section_notes",
    "fieldtype": "Section Break"
   },
@@ -168,7 +245,7 @@
  "image_field": null,
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-10-04 12:00:00.000000",
+ "modified": "2026-10-04 20:45:00.000000",
  "modified_by": "Administrator",
  "module": "Garage",
  "name": "Garage Vehicle",

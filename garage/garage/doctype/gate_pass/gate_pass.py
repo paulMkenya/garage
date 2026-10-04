@@ -69,6 +69,9 @@ class GatePass(Document):
 		self._set_released("Released")
 		if self.exit_odometer:
 			frappe.db.set_value("Garage Vehicle", self.vehicle, "last_odometer", self.exit_odometer)
+		from garage.reminders import update_service_due
+
+		update_service_due(self)
 
 	def on_cancel(self):
 		self._set_released("Ready for Collection")

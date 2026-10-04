@@ -16,3 +16,5 @@ after_migrate = ["garage.install.after_install"]
 doc_events = {
 	"Sales Invoice": {"on_submit": "garage.garage.doctype.repair_order.repair_order.link_on_submit"},
 }
+
+scheduler_events = {"daily": ["garage.reminders.send_service_reminders"]}
