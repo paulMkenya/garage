@@ -53,3 +53,7 @@ After installing:
 - **Uwazii SMS**: car received, estimate ready, car ready, payment received, car released and service reminders (daily). Every message is logged in **Garage SMS Log**.
 - **Reports**: Cars In Yard, Repair Turnaround, Technician Workload, Garage Revenue.
 - **Print formats**: check-in receipt, job card, gate pass.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
