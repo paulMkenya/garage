@@ -127,7 +127,7 @@ function garage_ro_approval(frm) {
 	d.fields_dict.items_html.$wrapper.html(
 		(frm.doc.items || []).length
 			? `<label class="control-label">${__("Approved items")}</label>` + frm.doc.items.map((r) => `
-				<div class="checkbox"><label><input type="checkbox" class="garage-approve" value="${r.name}" ${r.approved ? "checked" : ""}>
+				<div class="checkbox"><label><input type="checkbox" class="garage-approve" value="${r.name}" ${r.approved || !frm.doc.approved_on ? "checked" : ""}>
 				${frappe.utils.escape_html(r.item_name || r.item_code)} &middot; ${r.qty} &times; ${format_currency(r.rate, frm.doc.currency)}</label></div>`).join("")
 			: `<p class="text-muted">${__("No parts or labour added yet")}</p>`
 	);

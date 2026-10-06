@@ -39,8 +39,15 @@ class GatePass(Document):
 			errors.append(_("This vehicle already has a submitted gate pass"))
 
 		if self.release_basis == "Paid":
-			if not self.sales_invoice or frappe.db.get_value("Sales Invoice", self.sales_invoice, "docstatus") != 1:
+			si = (
+				frappe.db.get_value("Sales Invoice", self.sales_invoice, ["docstatus", "repair_order"], as_dict=True)
+				if self.sales_invoice
+				else None
+			)
+			if not si or si.docstatus != 1:
 				errors.append(_("No submitted Sales Invoice. Invoice the job or choose another release basis"))
+			elif si.repair_order != self.repair_order:
+				errors.append(_("Sales Invoice {0} is not for Repair Order {1}").format(self.sales_invoice, self.repair_order))
 			elif flt(self.outstanding_amount) > 0:
 				errors.append(
 					_("Balance of {0} is still due. Take payment or get credit authorised").format(
@@ -49,8 +56,10 @@ class GatePass(Document):
 				)
 		else:
 			role = settings.credit_approver_role or "Accounts Manager"
-			if role not in frappe.get_roles(self.authorised_by):
-				errors.append(_("{0} does not have the '{1}' role needed to authorise release").format(self.authorised_by, role))
+			if role in frappe.get_roles():
+				self.authorised_by = frappe.session.user
+			else:
+				errors.append(_("Only a user with the '{0}' role can release a car on {1}").format(role, _(self.release_basis)))
 
 		if settings.require_exit_photos:
 			missing = [self.meta.get_label(f) for f in EXIT_PHOTOS if not self.get(f)]

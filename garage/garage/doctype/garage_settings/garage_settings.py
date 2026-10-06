@@ -16,3 +16,5 @@ class GarageSettings(Document):
 			]
 			if missing:
 				frappe.throw(_("To enable SMS, fill in: {0}").format(", ".join(missing)))
+			if not self.sms_api_url.lower().startswith("https://"):
+				frappe.throw(_("The SMS API Base URL must start with https:// so your password is not sent in plain text"))

@@ -171,11 +171,12 @@
   },
   {
    "depends_on": "eval:doc.release_basis!='Paid'",
+   "description": "Set to the manager who submits the gate pass",
    "fieldname": "authorised_by",
    "fieldtype": "Link",
    "label": "Authorised By",
-   "mandatory_depends_on": "eval:doc.release_basis!='Paid'",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "depends_on": "eval:doc.release_basis!='Paid'",

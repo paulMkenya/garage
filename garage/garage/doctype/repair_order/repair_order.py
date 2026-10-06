@@ -120,7 +120,12 @@ def make_quotation(repair_order: str):
 	for row in ro.items:
 		q.append("items", _sales_item(row))
 	q.insert()
-	ro.db_set({"quotation": q.name, "approval_status": "Requested", "status": "Awaiting Approval"})
+	ro.quotation = q.name
+	if ro.approval_status in (None, "", "Not Requested"):
+		ro.approval_status = "Requested"
+	if ro.status in ("Received", "Diagnosis"):
+		ro.status = "Awaiting Approval"
+	ro.save()
 	return q.name
 
 

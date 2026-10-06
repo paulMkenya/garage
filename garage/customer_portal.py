@@ -17,7 +17,7 @@ def get_repair_order(key):
 
 
 def can_approve(ro):
-	return ro.status in CAN_APPROVE and bool(ro.items) and ro.approval_status in ("Not Requested", "Requested")
+	return ro.status in CAN_APPROVE and bool(ro.items) and ro.approval_status == "Requested"
 
 
 @frappe.whitelist(allow_guest=True, methods=["POST"])

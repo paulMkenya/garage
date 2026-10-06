@@ -91,7 +91,6 @@
   },
   {
    "columns": 1,
-   "default": "1",
    "fieldname": "approved",
    "fieldtype": "Check",
    "in_list_view": 1,

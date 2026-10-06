@@ -138,7 +138,6 @@
    "fieldname": "sms_api_url",
    "fieldtype": "Data",
    "label": "API Base URL",
-   "default": "http://api.messaging-service.com",
    "description": "Base URL from your Uwazii account. Messages are posted to {base}/sms/1/text/single"
   },
   {
@@ -237,26 +236,18 @@
    "write": 1
   },
   {
-   "create": 1,
    "email": 1,
-   "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Maintenance User",
-   "share": 1,
-   "write": 1
+   "role": "Maintenance User"
   },
   {
-   "create": 1,
    "email": 1,
-   "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Sales User",
-   "share": 1,
-   "write": 1
+   "role": "Sales User"
   }
  ],
  "sort_field": "creation",

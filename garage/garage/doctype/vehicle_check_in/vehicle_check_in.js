@@ -112,7 +112,7 @@ frappe.ui.form.on("Vehicle Check In", {
 		if (s.visits.length) {
 			html += `<ul class="small" style="margin:4px 0 0 16px;padding:0">${s.visits
 				.map((v) => `<li><a href="/app/vehicle-check-in/${v.name}">${v.name}</a> &middot; ${frappe.datetime.str_to_user(
-					v.check_in_time)} &middot; ${v.service_type || ""} &middot; ${format_number(v.odometer, null, 0)} km</li>`)
+					v.check_in_time)} &middot; ${frappe.utils.escape_html(v.service_type || "")} &middot; ${format_number(v.odometer, null, 0)} km</li>`)
 				.join("")}</ul>`;
 		}
 		wrapper.html(html + "</div>");
