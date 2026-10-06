@@ -1,0 +1,265 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_check_in",
+  "default_check_in_template",
+  "require_walkaround_photos",
+  "require_dashboard_photo",
+  "column_break_1",
+  "require_customer_signature",
+  "require_photo_for_damage",
+  "block_duplicate_check_in",
+  "section_terms",
+  "check_in_terms",
+  "section_release",
+  "require_quality_check",
+  "require_exit_photos",
+  "require_release_signature",
+  "credit_approver_role",
+  "section_sms",
+  "sms_enabled",
+  "sms_api_url",
+  "sms_username",
+  "sms_password",
+  "sms_sender_id",
+  "garage_phone",
+  "column_break_sms",
+  "sms_on_check_in",
+  "sms_on_estimate",
+  "sms_on_ready",
+  "sms_on_payment",
+  "sms_on_release",
+  "sms_service_reminders"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_check_in",
+   "fieldtype": "Section Break",
+   "label": "Gate Check-In"
+  },
+  {
+   "fieldname": "default_check_in_template",
+   "fieldtype": "Link",
+   "label": "Default Check-In Template",
+   "options": "Vehicle Check In Template"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_walkaround_photos",
+   "fieldtype": "Check",
+   "label": "Require front, rear, left & right photos"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_dashboard_photo",
+   "fieldtype": "Check",
+   "label": "Require dashboard photo (odometer, fuel, warning lights)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_customer_signature",
+   "fieldtype": "Check",
+   "label": "Require customer signature"
+  },
+  {
+   "default": "0",
+   "fieldname": "require_photo_for_damage",
+   "fieldtype": "Check",
+   "label": "Require a photo for every Damaged item / Severe mark"
+  },
+  {
+   "default": "1",
+   "fieldname": "block_duplicate_check_in",
+   "fieldtype": "Check",
+   "label": "Block check-in if the vehicle is already in the yard"
+  },
+  {
+   "fieldname": "section_terms",
+   "fieldtype": "Section Break",
+   "label": "Terms printed on the check-in receipt"
+  },
+  {
+   "fieldname": "check_in_terms",
+   "fieldtype": "Text",
+   "label": "Check-In Terms"
+  },
+  {
+   "fieldname": "section_release",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Release (Gate Pass)"
+  },
+  {
+   "fieldname": "require_quality_check",
+   "fieldtype": "Check",
+   "label": "Require passed Quality Check before Ready for Collection",
+   "default": "1"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_exit_photos",
+   "fieldtype": "Check",
+   "label": "Require front, rear, left & right exit photos"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_release_signature",
+   "fieldtype": "Check",
+   "label": "Require customer release signature"
+  },
+  {
+   "default": "Accounts Manager",
+   "fieldname": "credit_approver_role",
+   "fieldtype": "Link",
+   "label": "Role allowed to release unpaid vehicles",
+   "options": "Role"
+  },
+  {
+   "fieldname": "section_sms",
+   "fieldtype": "Section Break",
+   "label": "SMS (Uwazii)",
+   "collapsible": 1,
+   "description": "Uwazii Mobile HTTP API. Messages are logged in Garage SMS Log; nothing is sent while SMS is disabled."
+  },
+  {
+   "fieldname": "sms_enabled",
+   "fieldtype": "Check",
+   "label": "Enable SMS Sending",
+   "default": "0"
+  },
+  {
+   "fieldname": "sms_api_url",
+   "fieldtype": "Data",
+   "label": "API Base URL",
+   "default": "http://api.messaging-service.com",
+   "description": "Base URL from your Uwazii account. Messages are posted to {base}/sms/1/text/single"
+  },
+  {
+   "fieldname": "sms_username",
+   "fieldtype": "Data",
+   "label": "API Username"
+  },
+  {
+   "fieldname": "sms_password",
+   "fieldtype": "Password",
+   "label": "API Password"
+  },
+  {
+   "fieldname": "sms_sender_id",
+   "fieldtype": "Data",
+   "label": "Sender ID",
+   "description": "Approved alphanumeric sender ID (3-11 characters)"
+  },
+  {
+   "fieldname": "garage_phone",
+   "fieldtype": "Data",
+   "label": "Garage Phone (shown in messages)"
+  },
+  {
+   "fieldname": "column_break_sms",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sms_on_check_in",
+   "fieldtype": "Check",
+   "label": "Car received at gate",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_on_estimate",
+   "fieldtype": "Check",
+   "label": "Estimate awaiting approval",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_on_ready",
+   "fieldtype": "Check",
+   "label": "Car ready for collection",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_on_payment",
+   "fieldtype": "Check",
+   "label": "Payment received",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_on_release",
+   "fieldtype": "Check",
+   "label": "Car released at gate",
+   "default": "1"
+  },
+  {
+   "fieldname": "sms_service_reminders",
+   "fieldtype": "Check",
+   "label": "Service due reminders",
+   "default": "1"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-04 21:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Garage",
+ "name": "Garage Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

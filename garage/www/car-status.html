@@ -1,0 +1,123 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% macro money(v) %}{{ frappe.format_value(v, {"fieldtype": "Currency", "options": ro.currency}) }}{% endmacro %}
+
+{% block page_content %}
+<style>
+	body { background: #f3f5f8; }
+	.cs { max-width: 680px; margin: 0 auto; padding: 16px 12px 40px; font-size: 15px; color: #14243b; }
+	.cs-card { background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+	.cs-head { background: #14243b; color: #fff; }
+	.cs-head .plate { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+	.cs-head .muted { color: #c9d3e0; }
+	.cs-badge { display: inline-block; background: #f28c28; color: #fff; border-radius: 20px; padding: 3px 12px; font-weight: 600; margin-top: 8px; }
+	.cs-steps { list-style: none; padding: 0; margin: 0; }
+	.cs-steps li { padding: 6px 0 6px 30px; position: relative; color: #9aa8ba; }
+	.cs-steps li:before { content: ""; position: absolute; left: 6px; top: 10px; width: 12px; height: 12px; border-radius: 50%; background: #d0d5dd; }
+	.cs-steps li.done { color: #14243b; } .cs-steps li.done:before { background: #1e8e5a; }
+	.cs-steps li.current { color: #14243b; font-weight: 700; } .cs-steps li.current:before { background: #f28c28; box-shadow: 0 0 0 4px #fde3c8; }
+	.cs h3 { font-size: 17px; margin: 0 0 12px; font-weight: 700; }
+	.cs table { width: 100%; border-collapse: collapse; }
+	.cs td { padding: 8px 4px; border-bottom: 1px solid #eef0f3; vertical-align: top; }
+	.cs td.amt { text-align: right; white-space: nowrap; }
+	.cs .total td { font-weight: 700; border-bottom: none; }
+	.cs .muted { color: #5b6776; font-size: 13px; }
+	.cs input[type=text] { width: 100%; padding: 10px; border: 1px solid #d0d5dd; border-radius: 8px; margin: 6px 0 12px; }
+	.cs .btn-row { display: flex; gap: 10px; }
+	.cs .btn-row button { flex: 1; padding: 12px; border-radius: 8px; border: none; font-weight: 700; font-size: 15px; }
+	.cs .approve { background: #1e8e5a; color: #fff; } .cs .decline { background: #eef0f3; color: #c63b3b; }
+	.cs .ok { background: #e7f5ee; color: #1e6e47; border-radius: 8px; padding: 12px; }
+	.cs .warn { background: #fdecea; color: #a12f2f; border-radius: 8px; padding: 12px; }
+</style>
+<div class="cs">
+{% if invalid %}
+	<div class="cs-card"><h3>{{ _("This link is not valid") }}</h3><p class="muted">{{ _("Please contact the garage for a new link.") }}</p></div>
+{% else %}
+	<div class="cs-card cs-head">
+		<div class="muted">{{ company | e }}</div>
+		<div class="plate">{{ ro.vehicle | e }}</div>
+		<div class="muted">{{ (ro.vehicle_description or "") | e }} &middot; {{ ro.name }}</div>
+		<div class="cs-badge">{{ _(ro.status) }}</div>
+		{% if ro.promised_time and ro.status not in ("Ready for Collection", "Released") %}
+		<div class="muted" style="margin-top:8px">{{ _("Promised") }}: {{ frappe.format_value(ro.promised_time, {"fieldtype": "Datetime"}) }}</div>
+		{% endif %}
+	</div>
+
+	{% if ro.status == "Ready for Collection" %}
+	<div class="cs-card ok"><b>{{ _("Your car is ready for collection.") }}</b>
+		{% if balance %}<br>{{ _("Balance to pay") }}: <b>{{ money(balance) }}</b>{% endif %}</div>
+	{% elif ro.status == "Released" %}
+	<div class="cs-card ok">{{ _("Your car has been collected. Thank you.") }}</div>
+	{% endif %}
+
+	{% if steps %}
+	<div class="cs-card"><h3>{{ _("Progress") }}</h3>
+		<ul class="cs-steps">{% for s in steps %}<li class="{{ s.state }}">{{ s.label }}{% if s.state == "current" and ro.status == "Waiting for Parts" %} &middot; {{ _("waiting for parts") }}{% endif %}</li>{% endfor %}</ul>
+	</div>
+	{% endif %}
+
+	{% if ro.jobs %}
+	<div class="cs-card"><h3>{{ _("Your concerns") }}</h3>
+		<table>{% for j in ro.jobs %}<tr><td><b>{{ j.concern | e }}</b>
+			{% if j.diagnosis %}<div class="muted">{{ _("Found") }}: {{ j.diagnosis | e }}</div>{% endif %}
+			{% if j.correction and j.job_status == "Done" %}<div class="muted">{{ _("Done") }}: {{ j.correction | e }}</div>{% endif %}
+		</td><td class="amt muted">{{ _(j.job_status or "") }}</td></tr>{% endfor %}</table>
+	</div>
+	{% endif %}
+
+	{% if ro.items %}
+	<div class="cs-card"><h3>{{ _("Estimate") }}</h3>
+		<form id="cs-form">
+		<table>
+		{% for r in ro.items %}<tr>
+			<td>{% if can_approve %}<label style="font-weight:normal"><input type="checkbox" name="row" value="{{ r.name }}" checked> {% endif %}
+				{{ (r.item_name or r.item_code) | e }} <span class="muted">&times; {{ frappe.format_value(r.qty, {"fieldtype": "Float"}) }}</span>
+				{% if can_approve %}</label>{% elif r.approved %} <span class="muted">&#10003;</span>{% endif %}</td>
+			<td class="amt">{{ money(r.amount) }}</td></tr>{% endfor %}
+		<tr class="total"><td>{{ _("Total") }}</td><td class="amt">{{ money(total) }}</td></tr>
+		{% if not can_approve and ro.approved_total %}<tr class="total"><td>{{ _("Approved") }}</td><td class="amt">{{ money(ro.approved_total) }}</td></tr>{% endif %}
+		</table>
+		{% if can_approve %}
+			<p class="muted" style="margin-top:12px">{{ _("Untick anything you don't want done. Prices include parts and labour.") }}</p>
+			<label>{{ _("Your name") }}</label>
+			<input type="text" id="cs-name" value="{{ (ro.customer_name or '') | e }}" maxlength="140">
+			<div class="btn-row">
+				<button type="button" class="approve" data-decision="Approve">{{ _("Approve selected work") }}</button>
+				<button type="button" class="decline" data-decision="Decline">{{ _("Decline") }}</button>
+			</div>
+			<div id="cs-msg" style="margin-top:12px"></div>
+		{% elif ro.approval_status not in ("Not Requested", "Requested") %}
+			<div class="ok" style="margin-top:12px">{{ _("Estimate {0} by {1}").format(_(ro.approval_status).lower(), ro.approved_by or "") | e }}</div>
+		{% endif %}
+		</form>
+	</div>
+	{% endif %}
+
+	{% if garage_phone %}<p class="muted" style="text-align:center">{{ _("Questions? Call us on") }} <a href="tel:{{ garage_phone | e }}">{{ garage_phone | e }}</a></p>{% endif %}
+{% endif %}
+</div>
+{% endblock %}
+
+{% block script %}
+{% if can_approve %}
+<script>
+document.querySelectorAll("#cs-form button").forEach((btn) => btn.addEventListener("click", () => {
+	const decision = btn.dataset.decision;
+	const rows = [...document.querySelectorAll("#cs-form input[name=row]:checked")].map((el) => el.value);
+	const msg = document.getElementById("cs-msg");
+	if (decision === "Decline" && !confirm({{ _("Decline the whole estimate?") | tojson }})) return;
+	frappe.call({
+		method: "garage.customer_portal.respond_estimate",
+		args: { key: {{ key | tojson }}, decision, approved_by: document.getElementById("cs-name").value, approved_rows: JSON.stringify(rows) },
+		btn: $(btn),
+		callback: () => window.location.reload(),
+		error: () => { msg.className = "warn"; msg.textContent = {{ _("Could not save. Please try again or call the garage.") | tojson }}; },
+	});
+}));
+</script>
+{% endif %}
+{% endblock %}

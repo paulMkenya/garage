@@ -1,0 +1,277 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 21:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-04 21:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Garage",
+ "owner": "Administrator",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "name": "Quality Check",
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "title_field": "vehicle",
+ "fields": [
+  {
+   "fieldname": "section_main",
+   "fieldtype": "Section Break",
+   "label": "Vehicle"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "QC-.YYYY.-.#####",
+   "default": "QC-.YYYY.-.#####",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "repair_order",
+   "fieldtype": "Link",
+   "label": "Repair Order",
+   "options": "Repair Order",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Number Plate",
+   "options": "Garage Vehicle",
+   "fetch_from": "repair_order.vehicle",
+   "read_only": 1,
+   "bold": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "vehicle_description",
+   "fieldtype": "Data",
+   "label": "Vehicle",
+   "fetch_from": "repair_order.vehicle_description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer",
+   "fetch_from": "repair_order.customer_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "technician_name",
+   "fieldtype": "Data",
+   "label": "Technician",
+   "fetch_from": "repair_order.technician_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspected_by",
+   "fieldtype": "Link",
+   "label": "Inspected By",
+   "options": "User",
+   "default": "__user",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspection_time",
+   "fieldtype": "Datetime",
+   "label": "Inspection Time",
+   "default": "Now",
+   "reqd": 1
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "\nPass\nFail",
+   "read_only": 1,
+   "bold": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "odometer_in",
+   "fieldtype": "Int",
+   "label": "Odometer at Check-In",
+   "fetch_from": "repair_order.odometer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_checks",
+   "fieldtype": "Section Break",
+   "label": "Quality Checks",
+   "description": "Every job and check must be Pass, Fail or N/A before submitting."
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Checks",
+   "options": "Quality Check Item"
+  },
+  {
+   "fieldname": "section_road",
+   "fieldtype": "Section Break",
+   "label": "Road Test"
+  },
+  {
+   "fieldname": "road_test_result",
+   "fieldtype": "Select",
+   "label": "Road Test",
+   "options": "Done - Pass\nDone - Fail\nNot Required",
+   "default": "Done - Pass",
+   "reqd": 1
+  },
+  {
+   "fieldname": "road_tested_by",
+   "fieldtype": "Link",
+   "label": "Road Tested By",
+   "options": "User",
+   "depends_on": "eval:doc.road_test_result!='Not Required'"
+  },
+  {
+   "fieldname": "road_test_route",
+   "fieldtype": "Data",
+   "label": "Route",
+   "depends_on": "eval:doc.road_test_result!='Not Required'"
+  },
+  {
+   "fieldname": "column_break_r",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "road_test_start_km",
+   "fieldtype": "Int",
+   "label": "Odometer Start (km)",
+   "depends_on": "eval:doc.road_test_result!='Not Required'"
+  },
+  {
+   "fieldname": "road_test_end_km",
+   "fieldtype": "Int",
+   "label": "Odometer End (km)",
+   "depends_on": "eval:doc.road_test_result!='Not Required'"
+  },
+  {
+   "fieldname": "road_test_notes",
+   "fieldtype": "Small Text",
+   "label": "Road Test Notes",
+   "depends_on": "eval:doc.road_test_result!='Not Required'",
+   "description": "Noises, vibration, pulling, brakes, gear changes, warning lights"
+  },
+  {
+   "fieldname": "section_findings",
+   "fieldtype": "Section Break",
+   "label": "Findings"
+  },
+  {
+   "fieldname": "issues_found",
+   "fieldtype": "Small Text",
+   "label": "Issues Found",
+   "mandatory_depends_on": "eval:doc.result=='Fail'"
+  },
+  {
+   "fieldname": "column_break_f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "signature",
+   "fieldtype": "Signature",
+   "label": "Inspector Signature"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Quality Check",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "field_order": [
+  "section_main",
+  "naming_series",
+  "repair_order",
+  "vehicle",
+  "vehicle_description",
+  "customer_name",
+  "technician_name",
+  "column_break_m",
+  "inspected_by",
+  "inspection_time",
+  "result",
+  "odometer_in",
+  "section_checks",
+  "items",
+  "section_road",
+  "road_test_result",
+  "road_tested_by",
+  "road_test_route",
+  "column_break_r",
+  "road_test_start_km",
+  "road_test_end_km",
+  "road_test_notes",
+  "section_findings",
+  "issues_found",
+  "column_break_f",
+  "signature",
+  "amended_from"
+ ],
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1,
+   "amend": 1,
+   "cancel": 1,
+   "delete": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1,
+   "amend": 1,
+   "cancel": 1,
+   "delete": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ]
+}

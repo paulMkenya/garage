@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "mark_no",
+  "view",
+  "damage_type",
+  "severity",
+  "notes",
+  "photo",
+  "x",
+  "y"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "mark_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Mark",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "view",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "View",
+   "options": "Front\nRear\nLeft Side\nRight Side\nTop",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "damage_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Damage",
+   "options": "Scratch\nDent\nCrack\nChip\nRust\nBroken\nMissing Part\nPaint Damage\nScuff\nOther",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "default": "Minor",
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Severity",
+   "options": "Minor\nModerate\nSevere"
+  },
+  {
+   "columns": 2,
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Notes"
+  },
+  {
+   "columns": 1,
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "in_list_view": 1,
+   "label": "Photo"
+  },
+  {
+   "fieldname": "x",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "X",
+   "precision": "1"
+  },
+  {
+   "fieldname": "y",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Y",
+   "precision": "1"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-04 17:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Garage",
+ "name": "Vehicle Damage Mark",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
