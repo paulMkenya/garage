@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" width="100%" class="garage-car-diagram" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <g id="g-side">
+      <path d="M20 125 L20 95 Q22 80 42 76 L200 64 Q235 60 290 24 L500 20 Q540 24 600 60 L718 68 Q742 72 746 92 L748 125 L655 125 A45 45 0 0 0 565 125 L215 125 A45 45 0 0 0 125 125 Z" fill="#f4f6f8" stroke="#344054" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M218 66 L292 30 L395 27 L395 66 Z" fill="#dbe7f3" stroke="#344054" stroke-width="2"/>
+      <path d="M405 27 L492 25 Q530 30 572 62 L405 66 Z" fill="#dbe7f3" stroke="#344054" stroke-width="2"/>
+      <path d="M210 66 L222 125 M400 28 L400 125 M578 62 L565 122" stroke="#344054" stroke-width="2" fill="none"/>
+      <path d="M210 60 l-14 -8 l-6 10 z" fill="#98a2b3" stroke="#344054" stroke-width="2"/>
+      <rect x="330" y="78" width="26" height="6" rx="3" fill="#667085"/>
+      <rect x="505" y="78" width="26" height="6" rx="3" fill="#667085"/>
+      <rect x="22" y="82" width="34" height="12" rx="4" fill="#fef0c7" stroke="#344054" stroke-width="2"/>
+      <rect x="724" y="74" width="20" height="16" rx="3" fill="#fda29b" stroke="#344054" stroke-width="2"/>
+      <circle cx="170" cy="128" r="37" fill="#344054"/><circle cx="170" cy="128" r="17" fill="#d0d5dd"/>
+      <circle cx="610" cy="128" r="37" fill="#344054"/><circle cx="610" cy="128" r="17" fill="#d0d5dd"/>
+    </g>
+    <g id="g-top">
+      <path d="M30 100 Q30 30 95 22 L690 22 Q752 26 756 100 Q752 174 690 178 L95 178 Q30 170 30 100 Z" fill="#f4f6f8" stroke="#344054" stroke-width="3"/>
+      <rect x="130" y="12" width="80" height="12" rx="4" fill="#344054"/><rect x="130" y="176" width="80" height="12" rx="4" fill="#344054"/>
+      <rect x="570" y="12" width="80" height="12" rx="4" fill="#344054"/><rect x="570" y="176" width="80" height="12" rx="4" fill="#344054"/>
+      <path d="M205 38 L290 52 L290 148 L205 162 Z" fill="#dbe7f3" stroke="#344054" stroke-width="2"/>
+      <rect x="295" y="52" width="225" height="96" rx="10" fill="#eaecf0" stroke="#344054" stroke-width="2"/>
+      <path d="M525 52 L600 40 L600 160 L525 148 Z" fill="#dbe7f3" stroke="#344054" stroke-width="2"/>
+      <path d="M60 60 Q120 100 60 140 M215 22 L215 38 M400 22 L400 52 M400 148 L400 178 M215 162 L215 178" stroke="#344054" stroke-width="2" fill="none"/>
+      <path d="M222 22 l-8 -14 l-12 4 l4 10 z M222 178 l-8 14 l-12 -4 l4 -10 z" fill="#98a2b3" stroke="#344054" stroke-width="2"/>
+    </g>
+    <g id="g-front">
+      <path d="M12 122 L12 82 Q15 62 34 56 L52 24 Q90 14 128 24 L146 56 Q165 62 168 82 L168 122 Z" fill="#f4f6f8" stroke="#344054" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M57 30 Q90 22 123 30 L136 54 L44 54 Z" fill="#dbe7f3" stroke="#344054" stroke-width="2"/>
+      <ellipse cx="36" cy="74" rx="15" ry="9" fill="#fef0c7" stroke="#344054" stroke-width="2"/>
+      <ellipse cx="144" cy="74" rx="15" ry="9" fill="#fef0c7" stroke="#344054" stroke-width="2"/>
+      <rect x="62" y="66" width="56" height="20" rx="4" fill="#d0d5dd" stroke="#344054" stroke-width="2"/>
+      <rect x="66" y="98" width="48" height="12" fill="#fff" stroke="#344054" stroke-width="1.5"/>
+      <path d="M12 94 L168 94" stroke="#344054" stroke-width="2"/>
+      <path d="M34 54 l-16 -6 l-4 10 z M146 54 l16 -6 l4 10 z" fill="#98a2b3" stroke="#344054" stroke-width="2"/>
+      <rect x="18" y="122" width="26" height="22" rx="4" fill="#344054"/><rect x="136" y="122" width="26" height="22" rx="4" fill="#344054"/>
+    </g>
+    <g id="g-rear">
+      <path d="M12 122 L12 82 Q15 62 34 56 L52 24 Q90 14 128 24 L146 56 Q165 62 168 82 L168 122 Z" fill="#f4f6f8" stroke="#344054" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M57 30 Q90 22 123 30 L134 52 L46 52 Z" fill="#dbe7f3" stroke="#344054" stroke-width="2"/>
+      <rect x="18" y="64" width="30" height="16" rx="3" fill="#fda29b" stroke="#344054" stroke-width="2"/>
+      <rect x="132" y="64" width="30" height="16" rx="3" fill="#fda29b" stroke="#344054" stroke-width="2"/>
+      <rect x="64" y="72" width="52" height="16" fill="#fff" stroke="#344054" stroke-width="1.5"/>
+      <path d="M12 98 L168 98" stroke="#344054" stroke-width="2"/>
+      <circle cx="140" cy="112" r="5" fill="#667085"/>
+      <rect x="18" y="122" width="26" height="22" rx="4" fill="#344054"/><rect x="136" y="122" width="26" height="22" rx="4" fill="#344054"/>
+    </g>
+  </defs>
+  <rect x="0" y="0" width="1200" height="700" fill="#ffffff"/>
+  <g font-size="18" font-weight="700" fill="#475467" text-anchor="middle">
+    <use href="#g-side" xlink:href="#g-side" transform="translate(222,10)"/>
+    <text x="600" y="228">LEFT SIDE</text>
+    <use href="#g-top" xlink:href="#g-top" transform="translate(222,250)"/>
+    <text x="600" y="470">TOP / ROOF</text>
+    <use href="#g-front" xlink:href="#g-front" transform="translate(15,275)"/>
+    <text x="105" y="455">FRONT</text>
+    <use href="#g-rear" xlink:href="#g-rear" transform="translate(1005,275)"/>
+    <text x="1095" y="455">REAR</text>
+    <use href="#g-side" xlink:href="#g-side" transform="translate(978,480) scale(-1,1)"/>
+    <text x="600" y="695">RIGHT SIDE</text>
+  </g>
+  <g class="garage-marks"><!--MARKS--></g>
+</svg>

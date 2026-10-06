@@ -1,0 +1,409 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-04 19:30:00.000000",
+ "default_print_format": "Gate Pass Print",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_main",
+  "naming_series",
+  "repair_order",
+  "vehicle",
+  "vehicle_description",
+  "customer",
+  "customer_name",
+  "check_in",
+  "column_break_m",
+  "company",
+  "currency",
+  "sales_invoice",
+  "grand_total",
+  "outstanding_amount",
+  "release_basis",
+  "authorised_by",
+  "authorisation_reason",
+  "section_exit",
+  "entry_odometer",
+  "exit_odometer",
+  "exit_fuel_level",
+  "column_break_e",
+  "keys_returned",
+  "belongings_returned",
+  "documents_returned",
+  "old_parts",
+  "vehicle_washed",
+  "section_photos",
+  "photo_exit_front",
+  "photo_exit_rear",
+  "column_break_p",
+  "photo_exit_left",
+  "photo_exit_right",
+  "section_collect",
+  "collected_by",
+  "collector_id_number",
+  "collector_phone",
+  "column_break_c",
+  "released_by",
+  "released_on",
+  "section_sign",
+  "release_notes",
+  "release_signature",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_main",
+   "fieldtype": "Section Break",
+   "label": "Vehicle"
+  },
+  {
+   "default": "GP-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "GP-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "repair_order",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Repair Order",
+   "options": "Repair Order",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fetch_from": "repair_order.vehicle",
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Number Plate",
+   "options": "Garage Vehicle",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "repair_order.vehicle_description",
+   "fieldname": "vehicle_description",
+   "fieldtype": "Data",
+   "label": "Vehicle",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "repair_order.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "repair_order.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "repair_order.check_in",
+   "fieldname": "check_in",
+   "fieldtype": "Link",
+   "label": "Gate Check-In",
+   "options": "Vehicle Check In",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "repair_order.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fetch_from": "repair_order.sales_invoice",
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Invoice Total",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Balance Due",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "Paid",
+   "fieldname": "release_basis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Release Basis",
+   "options": "Paid\nCredit Authorised\nWarranty / Goodwill\nNo Charge",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.release_basis!='Paid'",
+   "description": "Set to the manager who submits the gate pass",
+   "fieldname": "authorised_by",
+   "fieldtype": "Link",
+   "label": "Authorised By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.release_basis!='Paid'",
+   "fieldname": "authorisation_reason",
+   "fieldtype": "Small Text",
+   "label": "Reason",
+   "mandatory_depends_on": "eval:doc.release_basis!='Paid'"
+  },
+  {
+   "fieldname": "section_exit",
+   "fieldtype": "Section Break",
+   "label": "Exit Condition"
+  },
+  {
+   "fetch_from": "repair_order.odometer",
+   "fieldname": "entry_odometer",
+   "fieldtype": "Int",
+   "label": "Odometer at Check-In",
+   "read_only": 1
+  },
+  {
+   "fieldname": "exit_odometer",
+   "fieldtype": "Int",
+   "label": "Odometer at Exit (km)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "exit_fuel_level",
+   "fieldtype": "Select",
+   "label": "Fuel Level at Exit",
+   "options": "\nEmpty\nReserve\n1/4\n1/2\n3/4\nFull",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_e",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "keys_returned",
+   "fieldtype": "Check",
+   "label": "All keys / remotes returned"
+  },
+  {
+   "fieldname": "belongings_returned",
+   "fieldtype": "Check",
+   "label": "Customer belongings returned"
+  },
+  {
+   "fieldname": "documents_returned",
+   "fieldtype": "Check",
+   "label": "Logbook / documents returned"
+  },
+  {
+   "fieldname": "old_parts",
+   "fieldtype": "Select",
+   "label": "Old Parts",
+   "options": "\nReturned to customer\nDisposed by garage\nKept for warranty claim\nNone replaced"
+  },
+  {
+   "fieldname": "vehicle_washed",
+   "fieldtype": "Check",
+   "label": "Vehicle washed / cleaned"
+  },
+  {
+   "fieldname": "section_photos",
+   "fieldtype": "Section Break",
+   "label": "Exit Photos"
+  },
+  {
+   "fieldname": "photo_exit_front",
+   "fieldtype": "Attach Image",
+   "label": "Front"
+  },
+  {
+   "fieldname": "photo_exit_rear",
+   "fieldtype": "Attach Image",
+   "label": "Rear"
+  },
+  {
+   "fieldname": "column_break_p",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "photo_exit_left",
+   "fieldtype": "Attach Image",
+   "label": "Left Side"
+  },
+  {
+   "fieldname": "photo_exit_right",
+   "fieldtype": "Attach Image",
+   "label": "Right Side"
+  },
+  {
+   "fieldname": "section_collect",
+   "fieldtype": "Section Break",
+   "label": "Collected By"
+  },
+  {
+   "fieldname": "collected_by",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "collector_id_number",
+   "fieldtype": "Data",
+   "label": "ID / Passport No."
+  },
+  {
+   "fieldname": "collector_phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_c",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "__user",
+   "fieldname": "released_by",
+   "fieldtype": "Link",
+   "label": "Released By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "released_on",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Released On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_sign",
+   "fieldtype": "Section Break",
+   "label": "Sign-off"
+  },
+  {
+   "fieldname": "release_notes",
+   "fieldtype": "Small Text",
+   "label": "Notes / Remarks"
+  },
+  {
+   "fieldname": "release_signature",
+   "fieldtype": "Signature",
+   "label": "Customer Release Signature"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Gate Pass",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-10-04 20:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Garage",
+ "name": "Gate Pass",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "vehicle",
+ "track_changes": 1
+}

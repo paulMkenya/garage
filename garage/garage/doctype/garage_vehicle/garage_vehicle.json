@@ -1,0 +1,310 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:license_plate",
+ "creation": "2026-10-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "license_plate",
+  "customer",
+  "customer_name",
+  "column_break_1",
+  "make",
+  "model",
+  "year",
+  "color",
+  "section_details",
+  "vin",
+  "engine_no",
+  "engine_capacity",
+  "column_break_2",
+  "fuel_type",
+  "transmission",
+  "body_type",
+  "section_history",
+  "last_odometer",
+  "column_break_3",
+  "last_check_in",
+  "last_service_date",
+  "last_service_km",
+  "column_break_svc",
+  "next_service_date",
+  "next_service_km",
+  "reminder_sent_on",
+  "section_interval",
+  "service_interval_km",
+  "column_break_int",
+  "service_interval_months",
+  "section_visits",
+  "service_history_html",
+  "section_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
+   "description": "Stored without spaces in capitals, e.g. KDA123A",
+   "fieldname": "license_plate",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Number Plate",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Owner / Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "make",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Make",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Model"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "color",
+   "fieldtype": "Data",
+   "label": "Colour"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_details",
+   "fieldtype": "Section Break",
+   "label": "Technical Details"
+  },
+  {
+   "fieldname": "vin",
+   "fieldtype": "Data",
+   "label": "VIN / Chassis No."
+  },
+  {
+   "fieldname": "engine_no",
+   "fieldtype": "Data",
+   "label": "Engine No."
+  },
+  {
+   "fieldname": "engine_capacity",
+   "fieldtype": "Data",
+   "label": "Engine Capacity (cc)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Select",
+   "label": "Fuel Type",
+   "options": "\nPetrol\nDiesel\nHybrid\nElectric\nLPG\nOther"
+  },
+  {
+   "fieldname": "transmission",
+   "fieldtype": "Select",
+   "label": "Transmission",
+   "options": "\nManual\nAutomatic\nCVT\nOther"
+  },
+  {
+   "fieldname": "body_type",
+   "fieldtype": "Select",
+   "label": "Body Type",
+   "options": "\nSaloon\nHatchback\nStation Wagon\nSUV\nPickup\nVan\nMatatu / Minibus\nTruck\nBus\nMotorcycle\nOther"
+  },
+  {
+   "fieldname": "section_history",
+   "fieldtype": "Section Break",
+   "label": "History"
+  },
+  {
+   "fieldname": "last_odometer",
+   "fieldtype": "Int",
+   "label": "Last Odometer (km)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_check_in",
+   "fieldtype": "Link",
+   "label": "Last Check-In",
+   "options": "Vehicle Check In",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_service_date",
+   "fieldtype": "Date",
+   "label": "Last Service Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_service_km",
+   "fieldtype": "Int",
+   "label": "Last Service Odometer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_svc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "next_service_date",
+   "fieldtype": "Date",
+   "in_standard_filter": 1,
+   "label": "Next Service Due"
+  },
+  {
+   "fieldname": "next_service_km",
+   "fieldtype": "Int",
+   "label": "Next Service at (km)"
+  },
+  {
+   "fieldname": "reminder_sent_on",
+   "fieldtype": "Date",
+   "label": "Reminder Sent On",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_interval",
+   "fieldtype": "Section Break",
+   "label": "Service Interval"
+  },
+  {
+   "default": "5000",
+   "fieldname": "service_interval_km",
+   "fieldtype": "Int",
+   "label": "Every (km)"
+  },
+  {
+   "fieldname": "column_break_int",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "6",
+   "fieldname": "service_interval_months",
+   "fieldtype": "Int",
+   "label": "Every (months)"
+  },
+  {
+   "fieldname": "section_visits",
+   "fieldtype": "Section Break",
+   "label": "Visit History"
+  },
+  {
+   "fieldname": "service_history_html",
+   "fieldtype": "HTML",
+   "label": "Service History"
+  },
+  {
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "image_field": null,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-04 20:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "Garage",
+ "name": "Garage Vehicle",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "customer_name,make,model",
+ "show_title_field_in_link": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "license_plate",
+ "track_changes": 1
+}
