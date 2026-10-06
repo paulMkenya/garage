@@ -24,12 +24,15 @@ def after_install():
 		settings.check_in_terms = CHECK_IN_TERMS
 		changed = True
 	for field in settings.meta.fields:
-		if field.fieldname.startswith(("sms_", "garage_phone", "require_quality_check")) and field.default is not None:
-			if not frappe.db.sql(
+		if (
+			field.fieldname.startswith(("sms_", "garage_phone", "require_quality_check"))
+			and field.default is not None
+			and not frappe.db.sql(
 				"select 1 from `tabSingles` where doctype='Garage Settings' and field=%s", field.fieldname
-			):
-				settings.set(field.fieldname, field.default)
-				changed = True
+			)
+		):
+			settings.set(field.fieldname, field.default)
+			changed = True
 	if changed:
 		settings.flags.ignore_mandatory = True
 		settings.save(ignore_permissions=True)
@@ -59,19 +62,7 @@ def setup_workshop():
 		update=True,
 	)
 
-	for group in ("Garage Parts", "Garage Labour"):
-		if not frappe.db.exists("Item Group", group):
-			frappe.get_doc(
-				{"doctype": "Item Group", "item_group_name": group, "parent_item_group": "All Item Groups"}
-			).insert(ignore_permissions=True)
-
-	for code, name in LABOUR_ITEMS:
-		if not frappe.db.exists("Item", code):
-			frappe.get_doc({
-				"doctype": "Item", "item_code": code, "item_name": name, "item_group": "Garage Labour",
-				"stock_uom": "Hour" if frappe.db.exists("UOM", "Hour") else "Nos",
-				"is_stock_item": 0, "include_item_in_manufacturing": 0,
-			}).insert(ignore_permissions=True)
+	setup_items()
 
 	if not frappe.db.exists("Kanban Board", "Workshop Board"):
 		from garage.garage.doctype.repair_order.repair_order import RO_STATUSES
@@ -90,3 +81,27 @@ def setup_workshop():
 		"fields",
 		'["customer_name", "vehicle_description", "technician_name", "bay", "promised_time"]',
 	)
+
+
+def after_setup_wizard(args=None):
+	setup_items()
+	frappe.db.commit()
+
+
+def setup_items():
+	# ERPNext creates the root item group in its setup wizard; until then there is nowhere to put items.
+	if not frappe.db.exists("Item Group", "All Item Groups"):
+		return
+	for group in ("Garage Parts", "Garage Labour"):
+		if not frappe.db.exists("Item Group", group):
+			frappe.get_doc(
+				{"doctype": "Item Group", "item_group_name": group, "parent_item_group": "All Item Groups"}
+			).insert(ignore_permissions=True)
+
+	for code, name in LABOUR_ITEMS:
+		if not frappe.db.exists("Item", code):
+			frappe.get_doc({
+				"doctype": "Item", "item_code": code, "item_name": name, "item_group": "Garage Labour",
+				"stock_uom": "Hour" if frappe.db.exists("UOM", "Hour") else "Nos",
+				"is_stock_item": 0, "include_item_in_manufacturing": 0,
+			}).insert(ignore_permissions=True)

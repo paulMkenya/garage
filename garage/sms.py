@@ -59,7 +59,7 @@ def deliver(log_name):
 		group = (msg.get("status") or {}).get("groupName")
 		log.message_id = msg.get("messageId")
 		log.status = "Sent" if resp.ok and group in STATUS_SENT_GROUPS else "Failed"
-	except Exception as e:
+	except Exception as e:  # noqa: BLE001 - any send failure is logged, never raised
 		log.status = "Failed"
 		log.response = str(e)[:5000]
 	log.sent_on = now_datetime()
